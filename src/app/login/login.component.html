@@ -1,0 +1,12 @@
+<div class="logo">
+  <img src="../../assets/logo.png" alt="logotipo">
+</div>
+
+<div class="login">
+<h2 class="login-header">Login</h2>
+<form ngNoForm class="login-container">
+  <p><input type="email" [(ngModel)]="usuario.email" placeholder="Email"></p>
+  <p><input type="password" [(ngModel)]="usuario.senha" placeholder="Password"></p>
+  <p><input class=""type="button" value="Login" (click)="login()"></p>
+</form>
+</div>

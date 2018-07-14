@@ -1,0 +1,96 @@
+<div *ngIf="!viewDOM" class="spinner">
+    <app-loading ></app-loading>
+</div>
+
+<div *ngIf="viewDOM">
+        <div class="option">
+            <div class="logo">
+                <img src="../../assets/logo.png" alt="">
+            </div>
+
+            <ul class="menu">
+                <a (click)="viewSelect('addProduto')" [ngClass]="{'active' : viewItem === 'addProduto'}">
+                    <i class="fa fa-dashboard"></i>
+                    Adicionar Produto
+                </a>
+
+                <a (click)="viewSelect('ListProdutos')" [ngClass]="{'active' : viewItem === 'ListProdutos'}">
+                    <i class="fa fa-dashboard"></i>
+                    Produtos
+                </a>
+                    <br>
+                <a (click)="viewSelect('Pedidos')" [ngClass]="{'active' : viewItem === 'Pedidos'}">
+                    <i class="fa fa-tasks"></i>
+                    Pedidos
+                </a>
+                <a (click)="viewSelect('Espessuras')" [ngClass]="{'active' : viewItem === 'Espessuras'}">
+                    <i class="fa fa-tasks"></i>
+                    Categorias/Metragens
+                </a>
+                <a (click)="viewSelect('Colorações')" [ngClass]="{'active' : viewItem === 'Colorações'}">
+                    <i class="fa fa-tasks"></i>
+                    Colorações
+
+                </a>
+                <a (click)="viewSelect('Usuarios')" [ngClass]="{'active' : viewItem === 'Usuarios'}">
+                    <i class="fa fa-tasks"></i>
+                    Usuários
+                </a>
+                
+            </ul>
+
+        </div>
+        
+
+        <div class="dashboard-heading">
+
+            <div class="all">
+            <div class="starter-stats">
+                <div class="blok">
+                <div class="no">
+                <p>Qntd. Pedidos</p>
+                <p>{{service.qnt_pedidos}}</p>
+                    </div>
+                </div>
+                
+                <div class="blok">
+                    <div class="no">
+                        <p>Entrega</p>
+                        <div class="input-label">
+                            <input style="height: fit-content; width:80px; padding-left: 5px;" type="number" placeholder="Prazo" [(ngModel)]="entregaTemp.prazo">
+                            <button (click)="setPrazo()"class="btn btn-default btn-mini">Salvar</button>
+                            <p>&nbsp; Atual: <b style="color:rgb(228, 183, 36)">{{entrega.prazo}} Dia(s)</b></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="blok">
+                <div class="no">
+                <p>Valor do Frete</p>
+                <div class="input-label">
+                    <input style="height: fit-content; width:80px; padding-left: 5px;"currencyMask placeholder="Frete" [(ngModel)]="entregaTemp.frete" [options]="MASCARA_MONEY">
+                    <button (click)="setFrete()"class="btn btn-default btn-mini">Salvar</button>
+                    <p>&nbsp; Atual: <b style="color:green"> R$ {{entrega.frete}},00</b></p>
+                </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="gains">
+                    <div>
+                    <app-valores *ngIf="viewItem ==='Espessuras'"></app-valores>
+                    <app-subcategorias *ngIf="viewItem ==='Espessuras'"></app-subcategorias>
+                    <app-cadastrar *ngIf="viewItem ==='addProduto'"></app-cadastrar>
+                    <app-cores *ngIf="viewItem ==='Colorações'" ></app-cores>
+                    <app-produtos *ngIf="viewItem ==='ListProdutos'"></app-produtos>
+                    <app-usuarios *ngIf="viewItem ==='Usuarios'"></app-usuarios>
+                    <app-pedidos *ngIf="viewItem ==='Pedidos'"></app-pedidos>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>
+
+
+
+

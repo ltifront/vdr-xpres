@@ -1,0 +1,10 @@
+
+export const IMAGENS = 'imagens/'
+export const CATEGORIAS = 'categorias/'
+export const SUBCATEGORIAS = 'subcategorias/'
+export const PRODUTOS = 'produtos/' 
+export const USUARIOS = 'usuarios/'
+export const COMPRAS = 'compras/'
+export const MODELOS = 'modelos/'
+export const CORES = 'cores/'
+export const ENTREGA = 'entrega/'

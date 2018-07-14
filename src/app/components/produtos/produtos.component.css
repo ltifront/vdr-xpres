@@ -1,0 +1,43 @@
+
+.image-product{
+    width: 22%;
+    padding: 15px;
+    overflow: hidden;
+    border: 1px solid rgb(214, 214, 214);  
+}
+.image-product{
+  width: 25%;
+  
+}
+
+.image-product img{
+    width: 100%;
+}
+.product-content{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.info-content{
+    padding-left: 2rem;
+    width: 50%;
+    
+}
+.options{
+  display: flex;
+  width: 25%;
+  align-items: start;
+  justify-content: center;
+    
+}
+.modal-body{
+  padding: 7rem;
+}
+
+.modal-lg{
+  padding-left: 50px;
+  padding-right: 50px;
+  max-width: 80% !important;
+  display: block;
+}
+
+  

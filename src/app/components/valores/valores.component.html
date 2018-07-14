@@ -1,0 +1,91 @@
+<div *ngIf="viewDOM">
+
+    <br>
+    <h6 style="text-align:center">Categorias</h6>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <button data-toggle="modal" data-target="#modalAdd" >Adicionar categoria</button>
+        </div>
+
+        <div class="col-lg-12">
+            <br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col" align="right"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let categoria of categorias; let i=index">
+                    <tr>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{categoria.nome}}</td>
+                        <td align="right">
+                            <div>
+                                <img (click)="setInfo(categoria)" data-toggle="modal" data-target="#modalAdd" class="btn-option" src="../../../assets/edit2.svg"
+                                    style="margin-right : 10px" alt="Detalhes">
+                                <img (click)="deleteCategoria(categoria)" class="btn-option" src="../../../assets/delete.svg" alt="Deletar">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAdd" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Info!</h5>
+                    <button (click)="dismissEdit()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Nome do tipo</span>
+                        </div>
+                        <input [(ngModel)]="categoriaTemp.nome" type="text" class="form-control">
+                    </div>
+                    <br>
+                    <p class="text-center">Informações</p>
+                    <hr><br>
+                    <form #formRef="ngForm" *ngFor="let info of infos; let in=index">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Coloração</span>
+                            </div>
+                            <select class="form-control" [(ngModel)]="infos[in].cor" name="cor" placeholder="Tipo">
+                                <option *ngFor="let color of availableColor" [ngValue]="color.nome">{{color.nome}}</option>
+                            </select>
+                        </div>  
+                        <br>
+                        <div class="input-group" *ngFor="let metragem of infos[in].espessuras; let j = index">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Espessura</span>
+                            </div>
+                            <input currencyMask placeholder="medida" [(ngModel)]="infos[in].espessuras[j].medida" [options]="MASCARA_MILIMETROS" name="name{{j}}" type="text" class="form-control">
+                            <input currencyMask placeholder="valor" [(ngModel)]="infos[in].espessuras[j].valor" [options]="MASCARA_MONEY" name="name{{j}}" type="text" class="form-control">
+                            <input [disabled]="!formRef.form.valid" class="btn btn-primary" type="button" value="Add" (click)="addMetragemForm(in, j)">
+                        </div>
+                        <br>
+                        <br>
+                    </form>
+                    <div class="col-lg-12">
+                        <input class="contain-btn-add" (click)=" saveMetragens(); addFormInfo()" type="image" src="../../../assets/circle.svg" name="button"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="saveCategoria()"type="button" class="btn-success" data-dismiss="modal">Salvar Tudo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-loading *ngIf="!viewDOM"></app-loading>

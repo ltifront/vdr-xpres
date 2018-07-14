@@ -1,0 +1,165 @@
+<app-loading *ngIf="!viewDOM"></app-loading>
+
+<div *ngIf="viewDOM">
+    <div class="row">
+        <div class="col-lg-12">
+            <img *ngIf="!modEdit" class="img-product" src="{{produto.imgLink | async}}">
+            <img *ngIf="modEdit" class="img-product" src="{{produto.imgLink.value}}">
+            <div class="flex-btn">
+                <button color="primary" (click)="fileInput.click()">Selecione a Imagem</button>
+                <input #fileInput type="file" (change)="chooseFile($event, null, false)" style="display:none;" />
+                <button [disabled]="!imgAdd" class="btn btn-danger" (click)="deleteImg(this.produto.imgId)">Apagar Imagem</button>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <p style="text-align: center">Informações</p>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome</span>
+                </div>
+                <input class="form-control" type="text" [(ngModel)]="produto.nome">
+            </div>
+            <br>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Categoria</span>
+                </div>
+                <select class="form-control" placeholder="Categoria" [(ngModel)]="produto.categoriaId">
+                    <option *ngFor="let categoria of categorias" [ngValue]="categoria.key">{{categoria.nome}}</option>
+                </select>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Sub-Categoria</span>
+                </div>
+                <select class="form-control" placeholder="Categoria" [(ngModel)]="produto.subcategoria">
+                    <option *ngFor="let subcategoria of Subcategorias" [ngValue]="subcategoria.key">{{subcategoria.nome}}</option>
+                </select>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Descrição</span>
+                </div>
+                <input class="form-control" type="text" [(ngModel)]="produto.descricao">
+            </div>
+            <br>
+        </div>
+        <div class="col-lg-12">
+                <br>
+                <h4 class="text-center">Especificações do Cliente</h4>
+            </div>
+    
+            <div class="col-lg-12" style="display: flex; justify-content: center;">
+    
+    
+                <div style="padding:15px">
+                    <input (change)="produto.fixo = !produto.fixo" type="checkbox" id="scales" name="feature" />
+                    <label for="scales">Medida de Fixo</label>
+                </div>
+    
+                <div style="padding:15px">
+                    <input (change)="produto.porta = !produto.porta" type="checkbox" id="horns" name="feature" />
+                    <label for="horns">Medida de Porta</label>
+                </div>
+    
+                <div style="padding:15px">
+                    <input (change)="produto.corte_v = !produto.corte_v" type="checkbox" id="claws" name="feature" />
+                    <label for="claws">Corte Vertical</label>
+                </div>
+    
+            </div>
+
+        <div class="col-lg-12">
+            <p style="text-align: center">Valores dos Descontos</p>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <select multiple class="form-control" id="exampleFormControlSelect2">
+                    <option *ngFor="let face of produto.cortes; let i = index">Folha : {{i+1}} Desconto Horizontal ({{face[0]}}) x Desconto Vertical ({{face[1]}})</option>
+                </select>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Folha {{produto.folhas.length+1}}</span>
+                </div>
+                <input placeholder="Desconto Horizontal" [(ngModel)]="corteH" type="number" class="form-control">
+                <input placeholder="Desconto Vertical" [(ngModel)]="corteV" type="number" class="form-control">
+                <input class="btn btn-primary" type="button" value="Add" (click)="addFace()">
+            </div>
+        </div>
+
+       
+
+    </div>
+    <div class="row">
+
+        <div class="col-lg-12">
+            <br> <hr><p class="text-center">Adicionar Kits</p>
+        </div>
+
+        <form #formRef="ngForm" style="display: block; width: 100%;" *ngFor="let item of kits; let in=index" class="col-lg-6">
+            <div>
+                <img *ngIf="!modEdit" class="img-kit" src="{{item.imgLink | async}}">
+            </div>
+            <div>
+                <img *ngIf="modEdit" class="img-kit" src="{{item.imgLink.value}}">
+            </div>
+            <div class="flex-btn">
+                <button color="primary" (click)="fileInput.click()">Selecione a Imagem</button>
+                <input #fileInput type="file" (change)="chooseFile($event, in, true)" style="display:none;" />
+                <button [disabled]="!imgAdd" class="btn btn-danger" (click)="deleteImg(item.imgId)">Apagar Imagem</button>
+            </div>
+
+            <div class="col-lg-6" style="float: right;">
+                <div class="form-group">
+                    <input currencyMask placeholder="Valor" [(ngModel)]="kits[in].valor" name="valor{{in}}" class="inputForm form-control" type="text"
+                        [options]="MASCARA_MONEY" #name="ngModel" required/>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <input type="text" placeholder="Nome" [(ngModel)]="kits[in].nome" name="name{{in}}" class="form-control" #name="ngModel"
+                        required/>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <input type="text" placeholder="Descrição" [(ngModel)]="kits[in].descricao" name="name{{in}}." class="form-control" #name="ngModel"
+                        required/>
+                </div>
+            </div>
+            <button [disabled]="!formRef.form.valid" (click)="addKit(in)">Adicionar Kit</button>
+            <br/>
+        </form>
+
+        <div class="col-lg-12 contain-btn-add">
+            <img (click)="addFormKit() " src="../../../assets/circle.svg" alt="">
+            <br>
+            <hr>
+        </div>
+
+        <div class="col-lg-12">
+            <button class="btn-success btn-block" (click)="cadastrarProduto()">Salvar Produto</button>
+        </div>
+    </div>
+</div>
