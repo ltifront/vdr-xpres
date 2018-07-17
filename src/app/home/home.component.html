@@ -16,22 +16,18 @@
 
                 <a (click)="viewSelect('ListProdutos')" [ngClass]="{'active' : viewItem === 'ListProdutos'}">
                     <i class="fa fa-dashboard"></i>
-                    Produtos
+                    Produtos Cadastrados
                 </a>
                     <br>
                 <a (click)="viewSelect('Pedidos')" [ngClass]="{'active' : viewItem === 'Pedidos'}">
                     <i class="fa fa-tasks"></i>
                     Pedidos
                 </a>
-                <a (click)="viewSelect('Espessuras')" [ngClass]="{'active' : viewItem === 'Espessuras'}">
+                <a (click)="viewSelect('Definicoes')" [ngClass]="{'active' : viewItem === 'Definicoes'}">
                     <i class="fa fa-tasks"></i>
-                    Categorias/Metragens
+                    Definições
                 </a>
-                <a (click)="viewSelect('Colorações')" [ngClass]="{'active' : viewItem === 'Colorações'}">
-                    <i class="fa fa-tasks"></i>
-                    Colorações
-
-                </a>
+                
                 <a (click)="viewSelect('Usuarios')" [ngClass]="{'active' : viewItem === 'Usuarios'}">
                     <i class="fa fa-tasks"></i>
                     Usuários
@@ -77,10 +73,8 @@
                 <div class="clear"></div>
                 <div class="gains">
                     <div>
-                    <app-valores *ngIf="viewItem ==='Espessuras'"></app-valores>
-                    <app-subcategorias *ngIf="viewItem ==='Espessuras'"></app-subcategorias>
+                    <app-valores *ngIf="viewItem ==='Definicoes'"></app-valores>
                     <app-cadastrar *ngIf="viewItem ==='addProduto'"></app-cadastrar>
-                    <app-cores *ngIf="viewItem ==='Colorações'" ></app-cores>
                     <app-produtos *ngIf="viewItem ==='ListProdutos'"></app-produtos>
                     <app-usuarios *ngIf="viewItem ==='Usuarios'"></app-usuarios>
                     <app-pedidos *ngIf="viewItem ==='Pedidos'"></app-pedidos>

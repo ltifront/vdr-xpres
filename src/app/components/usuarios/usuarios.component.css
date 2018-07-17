@@ -1,0 +1,9 @@
+.form-control{
+    width: 60%;
+    float : left;
+    padding: 0.220rem .75rem;
+}
+
+.update-descount{
+    margin-left: 10px;    
+}

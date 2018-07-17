@@ -1,11 +1,26 @@
+<div class="text-center">
+    <h4>Tutorial</h4>
+    <p>1 - Primeiro adicione todas as cores que os produtos irão ter</p>
+    <p>2 - Em seguida cadastre uma categoria de produto ( Ex. Vidro Temperado )</p>
+    <p>3 - Depois cadastre todas as subcategorias que os produtos irão adotar( Ex. Box )</p>
+    <h5>Pronto agora você pode cadastrar um produto!</h5>
+</div>
+
+<div class="block"></div>
+
 <div *ngIf="viewDOM">
 
     <br>
-    <h6 style="text-align:center">Categorias</h6>
+    <h4 style="text-align:center">Cores Cadastradas</h4>
+    <br>
+    <app-cores></app-cores>
+    <div class="block"></div>   
+    <br>
+    <h4 style="text-align:center">Categorias Cadastradas</h4>
     <br>
     <div class="row">
         <div class="col-lg-12">
-            <button data-toggle="modal" data-target="#modalAdd" >Adicionar categoria</button>
+            <button data-toggle="modal" data-target="#modalAdd" >Adicionar Nova Categoria</button>
         </div>
 
         <div class="col-lg-12">
@@ -34,6 +49,12 @@
             </table>
         </div>
     </div>
+    <div class="block"></div>
+    <br>
+    <h4 style="text-align:center">Subcategorias Cadastradas</h4>
+    <br>
+    <app-subcategorias></app-subcategorias>
+
     <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="ModalAdd" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
             <div class="modal-content">

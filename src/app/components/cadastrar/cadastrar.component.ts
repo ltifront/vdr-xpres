@@ -46,6 +46,7 @@ export class CadastrarComponent implements OnInit {
             this.produto.kits = new Array<any>()
             this.getCategorias()
             this.produto.corte_v = false , this.produto.fixo = false, this.produto.porta = false;
+            console.log(this.produto.folhas.length)
             
   }
   ngOnInit(){

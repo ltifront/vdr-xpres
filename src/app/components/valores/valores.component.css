@@ -47,3 +47,13 @@
     background-color: #14abfa;
     border-color: #14abfa;
 }
+
+.block{
+    margin: 0 auto;
+    display: block;
+    margin-left: -6rem;
+    margin-top: 5%;
+    height: 1rem;
+    width: 59.5rem;
+    background: #f2f2f2;
+}

@@ -6,30 +6,30 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nome</th>
-          <!-- <th scope="col">E-mail</th> -->
           <th scope="col">Tipo</th>
           <th scope="col">Desconto</th>
           <th scope="col">Telefone</th>
-          <th scope="col">Opções</th>
-          <th scope="col" align="right"></th>
+          <th align="right">Opções</th>
         </tr>
       </thead>
       <tbody *ngFor="let user of usuarios; let i=index">
         <tr>
           <th scope="row">{{i}}</th>
-          <td>{{user.nome}}</td>
+          <td style="width:30%">{{user.nome}}</td>
           <!-- <td>{{user.email}}</td> -->
-          <td>{{user.tipo}}</td>
-          <input currencyMask class="form-control" type="text" [(ngModel)]="user.desconto" [options]="MASCARA_PERCENT">
-          <td><a  (click)="setUser(user)">{{user.telefone}}</a></td>
-          <td align="right" style="width: 14%;">
+          <td style="width:18%">{{user.tipo}}</td>
+          <td>
+            <input currencyMask class="form-control" type="text" [(ngModel)]="user.desconto" [options]="MASCARA_PERCENT">
+            <img (click)="updateUser(user)" class="btn-option update-descount" src="../../../assets/checked.svg" alt="Atualizar">
+          </td>
+          <td style="width:12%"><a  (click)="setUser(user)">{{user.telefone}}</a></td>
+          <td style="width:11%">
             <div>
-              <img (click)="updateUser(user)" class="btn-option" src="../../../assets/checked.svg" alt="Atualizar">
               <img data-toggle="modal" data-target=".bd-example-modal-sm" (click)="detailUser(user)" class="btn-option" src="../../../assets/eye.svg" alt="Detalhes">
               <img (click)="deleteUser(user)" class="btn-option" src="../../../assets/delete.svg" alt="Deletar">
             </div>
           </td>
-          <td></td>
+       
         </tr>
       </tbody>
     </table>
