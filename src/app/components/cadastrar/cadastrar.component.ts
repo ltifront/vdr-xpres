@@ -46,7 +46,7 @@ export class CadastrarComponent implements OnInit {
             this.produto.kits = new Array<any>()
             this.getCategorias()
             this.produto.corte_v = false , this.produto.fixo = false, this.produto.porta = false;
-            console.log(this.produto.folhas.length)
+            
             
   }
   ngOnInit(){
@@ -58,6 +58,7 @@ export class CadastrarComponent implements OnInit {
        this.produto = new Produto()
        this.produto.kits = new Array<Kit>()
        this.produto.cortes = new Array<Array<number>>()
+       console.log(this.produto.cortes)
     } 
   }
   /*
@@ -102,12 +103,15 @@ export class CadastrarComponent implements OnInit {
           timeOut: 6000
         })
       }else{
-        await this.service.post('produtos', this.produto)
-        this.toastr.success('Produto Adicionado com sucesso!', 'Pronto',{
-          timeOut: 6000
-        })
-        this.produto = new Produto()
-        this.kits = new Array<Kit>()
+        this.service.post('produtos', this.produto).then(()=>{
+          this.toastr.success('Produto Adicionado com sucesso!', 'Pronto',{
+            timeOut: 6000
+          })
+          this.produto = new Produto()
+          this.kits = new Array<Kit>()
+          this.produto.cortes = new Array<Array<number>>()
+         })
+        
       }
       
     }else{
@@ -121,7 +125,7 @@ export class CadastrarComponent implements OnInit {
    *Método responsável por salvar um kits no Objeto produto 
    *
   */
-  async addKit(posicao) {
+  addKit(posicao) {
     if(this.kits[posicao].nome && this.kits[posicao].valor && this.kits[posicao].imgLink){
       this.produto.kits.push(this.kits[posicao])
       this.toastr.success('Kit Adicionado com Sucesso!', 'Pronto', {
@@ -175,6 +179,12 @@ export class CadastrarComponent implements OnInit {
    *Método responsável por Verificar se o produto é válido 
    *
   */
+  addCategoriaName(nome){
+    this.produto.categoriaNome = nome
+  }
+  addSubCategoriaName(nome){
+  this.produto.subcategoriaNome = nome
+  }
   productValidator(){
     if(this.produto.nome && this.produto.categoriaId){
       return true

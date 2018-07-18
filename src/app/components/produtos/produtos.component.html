@@ -15,9 +15,9 @@
       <div class="info-content">
         <h3>{{produto.nome}}</h3>
         <p><b>Descrição</b>  {{produto.descricao}}</p>
-        <p><b>Categoria</b>  {{produto.categoria}}</p>
-        <h3 style="color:rgb(78, 151, 78)">{{ produto.preco | currency:"R$":"BRL":'1.0-2'}}</h3>
-      </div>
+        <p><b>Categoria</b>  {{produto.categoriaNome}}</p>
+        <p><b>Subcategoria</b>  {{produto.categoriaNome}}</p>
+       
     <div class="options">
       <button data-toggle="modal" data-target="#modalEdit"(click)="setEdit(produto)">Editar</button>
       <button class="btn-danger"(click)="deleteProduto(produto)">Excluir</button>
