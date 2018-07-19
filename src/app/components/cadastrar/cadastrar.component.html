@@ -31,8 +31,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Categoria</span>
                 </div>
-                <select class="form-control" placeholder="Categoria"  [(ngModel)]="produto.categoriaId">
-                    <option *ngFor="let categoria of categorias" (change)="addCategoriaName(categoria.nome)" [ngValue]="categoria.key">{{categoria.nome}}</option>
+                <select class="form-control" placeholder="Categoria"  [(ngModel)]="produto.categoria">
+                    <option *ngFor="let categoria of categorias"  [ngValue]="categoria.key">{{categoria.nome}}</option>
                 </select>
             </div>
             <br>
@@ -44,7 +44,7 @@
                     <span class="input-group-text">Sub-Categoria</span>
                 </div>
                 <select class="form-control" placeholder="Categoria" [(ngModel)]="produto.subcategoria">
-                    <option *ngFor="let subcategoria of Subcategorias" (change)="addSubCategoriaName(subcategoria.nome)" [ngValue]="subcategoria.key">{{subcategoria.nome}}</option>
+                    <option *ngFor="let subcategoria of Subcategorias"[ngValue]="subcategoria.key">{{subcategoria.nome}}</option>
                 </select>
             </div>
             <br>
@@ -68,17 +68,17 @@
     
     
                 <div style="padding:15px">
-                    <input (change)="produto.fixo = !produto.fixo" type="checkbox" id="scales" name="feature" />
+                    <input [checked]="produto.fixo" (change)="produto.fixo = !produto.fixo" type="checkbox" id="scales" name="feature" />
                     <label for="scales">Medida de Fixo</label>
                 </div>
     
                 <div style="padding:15px">
-                    <input (change)="produto.porta = !produto.porta" type="checkbox" id="horns" name="feature" />
+                    <input [checked]="produto.porta" (change)="produto.porta = !produto.porta" type="checkbox" id="horns" name="feature" />
                     <label for="horns">Medida de Porta</label>
                 </div>
     
                 <div style="padding:15px">
-                    <input (change)="produto.corte_v = !produto.corte_v" type="checkbox" id="claws" name="feature" />
+                    <input [checked]="produto.corte_v" (change)="produto.corte_v = !produto.corte_v" type="checkbox" id="claws" name="feature" />
                     <label for="claws">Corte Vertical</label>
                 </div>
     

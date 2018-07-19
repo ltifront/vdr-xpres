@@ -45,7 +45,7 @@ export class CadastrarComponent implements OnInit {
             this.produto = new Produto() 
             this.produto.kits = new Array<any>()
             this.getCategorias()
-            this.produto.corte_v = false , this.produto.fixo = false, this.produto.porta = false;
+            
             
             
   }
@@ -55,10 +55,12 @@ export class CadastrarComponent implements OnInit {
         this.kits = this.produto.kits
       }
     }else{
-       this.produto = new Produto()
-       this.produto.kits = new Array<Kit>()
-       this.produto.cortes = new Array<Array<number>>()
-       console.log(this.produto.cortes)
+      this.produto = new Produto()
+      this.produto.kits = new Array<Kit>()
+      this.produto.cortes = new Array<Array<number>>()
+      this.produto.corte_v = false
+      this.produto.fixo = false
+      this.produto.porta = false
     } 
   }
   /*
@@ -97,6 +99,7 @@ export class CadastrarComponent implements OnInit {
   */
   async cadastrarProduto(){
     if(this.productValidator()){
+      this.getNamesCategorias()
       if(this.modEdit){
         await this.service.put(PRODUTOS, this.produto)
         this.toastr.success('Produto Alterado com sucesso!', 'Pronto',{
@@ -179,16 +182,24 @@ export class CadastrarComponent implements OnInit {
    *Método responsável por Verificar se o produto é válido 
    *
   */
-  addCategoriaName(nome){
-    this.produto.categoriaNome = nome
-  }
-  addSubCategoriaName(nome){
-  this.produto.subcategoriaNome = nome
-  }
+  
   productValidator(){
-    if(this.produto.nome && this.produto.categoriaId){
+    if(this.produto.nome && this.produto.categoriaId && this.produto.subcategoriaId && this.produto.imgLink){
       return true
     }
+  }
+
+  getNamesCategorias(){
+    this.categorias.forEach(element => {
+      if(this.produto.categoriaId === element.key){
+        this.produto.categoriaNome = element.nome
+      }
+    });
+    this.Subcategorias.forEach(element => {
+      if(this.produto.subcategoriaId === element.key){
+        this.produto.subcategoriaNome = element.nome
+      }
+    });
   }
  
   

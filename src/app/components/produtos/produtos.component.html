@@ -16,8 +16,8 @@
         <h3>{{produto.nome}}</h3>
         <p><b>Descrição</b>  {{produto.descricao}}</p>
         <p><b>Categoria</b>  {{produto.categoriaNome}}</p>
-        <p><b>Subcategoria</b>  {{produto.categoriaNome}}</p>
-       
+        <p><b>Subcategoria</b>  {{produto.subcategoriaNome}}</p>
+      </div>
     <div class="options">
       <button data-toggle="modal" data-target="#modalEdit"(click)="setEdit(produto)">Editar</button>
       <button class="btn-danger"(click)="deleteProduto(produto)">Excluir</button>

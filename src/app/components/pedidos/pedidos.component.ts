@@ -11,6 +11,7 @@ import { COMPRAS } from '../../ENDPOINTS';
 export class PedidosComponent implements OnInit {
 
   currentPedido : any
+  enderecoCurrent : any
   pedidos : Array<any> = new Array<any>()
   viewDOM : boolean = false;
   modView : boolean
@@ -40,7 +41,10 @@ export class PedidosComponent implements OnInit {
 
   detailPedido(pedido){
     this.currentPedido = pedido
+    this.enderecoCurrent = pedido.usuario.endereco
     this.modView = true;
+    console.log(this.currentPedido)
+    console.log(this.enderecoCurrent)
   }
   accept(){
     this.currentPedido.status = true;

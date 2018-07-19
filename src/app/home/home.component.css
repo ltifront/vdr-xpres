@@ -275,7 +275,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
     width: 100%;
 }
 

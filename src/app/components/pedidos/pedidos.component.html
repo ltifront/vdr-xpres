@@ -20,7 +20,7 @@
                     <td>{{pedido.valorTotal | currency:"R$":"BRL":'1.0-2'}}</td>
                     <td align="center">
                     <div>
-                        <img data-toggle="modal" data-target="#modalView" (click)="detailPedido(pedido)" class="btn-option" src="../../../assets/eye.svg" alt="Detalhes">
+                        <img (click)="detailPedido(pedido)" data-toggle="modal" data-target="#modalView"  class="btn-option" src="../../../assets/eye.svg" alt="Detalhes">
                         <img (click)="deletePedido(pedido)" class="btn-option" src="../../../assets/delete.svg" alt="Deletar">
                     </div>
                     </td>
@@ -51,9 +51,8 @@
                                 <p><b>Desconto</b>  {{currentPedido.usuario.desconto}} %</p>
                                 <p><b>Código da Transação</b>  {{currentPedido.codigo}}</p>
                                 <br>
-                                <p><b>Endereço</b>  {{currentPedido.usuario.endereco.rua}} {{produto.usuario.endereco.bairro}} {{produto.usuario.endereco.complemento}} {{produto.usuario.endereco.numero}} {{produto.usuario.endereco.cidade}} {{produto.usuario.endereco.estado}}</p>
+                                <p><b>Endereço</b>  {{enderecoCurrent.rua}} {{enderecoCurrent.bairro}}, {{ enderecoCurrent.complemento}} ,{{ enderecoCurrent.numero}} ,{{ enderecoCurrent.cidade}} ,{{ enderecoCurrent.estado}}</p>
                                 <br>
-                                <h3>Dados da compra</h3>
                                 <p><b>Entrega</b>  {{currentPedido.dataEntrga | date:'dd/MM/yyyy'}}</p>
                                 <br>
                                 <h4><b>Itens</b></h4>
@@ -77,12 +76,13 @@
                                   <p>Categoria: {{item.categoriaNome}}</p>
                                   <p>Sub-categoria: {{item.subcategoriaNome}}</p>
                                   <p>Coloração: {{item.cor}}</p>
+                                  <p>Valor do Item: <b style="color:rgb(78, 151, 78)">{{ item.preco | currency:"R$":"BRL":'1.0-2'}}</b></p>
                                 </div>
                             </div>
+                            <br>
+                            <h4 style="color:rgb(78, 151, 78)">VALOR TOTAL: {{ currentPedido.valorTotal | currency:"R$":"BRL":'1.0-2'}}</h4>
 
-
-
-                            <h3 style="color:rgb(78, 151, 78)">{{ produto.preco | currency:"R$":"BRL":'1.0-2'}}</h3>
+                            
                     </div>
                     <div class="modal-footer">
                         <button (click)="accept()"type="button" class="btn-success" data-dismiss="modal">Aprovar Pedido</button>

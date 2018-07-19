@@ -38,6 +38,7 @@ export class ProdutosComponent implements OnInit {
       res=>{
         this.produtos = res
         this.viewDOM = true
+        console.log(this.produtos)
       }
     )
   }
