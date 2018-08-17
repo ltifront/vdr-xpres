@@ -1,0 +1,71 @@
+
+h3{
+    font-size: 1.7rem
+}
+
+.inner-block{
+    margin-top: 10%;
+}
+
+.title{
+    color: #02add7;
+    font-size: 2.1rem
+}
+
+input, select, .btn-outline-primary{
+    padding: 5px;
+    font-size: 1.2rem
+}
+
+.signup-form {
+    background-color: #ffffff;
+    width : 50%;
+    margin : 0 auto;
+    display:block
+  }
+  
+  .signup-form form {
+    padding: 20px 10px
+  }
+  
+  .signup-form input[type=text], select {
+    border: none;
+    border-bottom: 1px solid darkgrey;
+    background-color: inherit;
+    display: block;
+    width: 100%;
+    margin: none;
+  }
+  
+  .signup-form input[type=text]:focus, select:focus {
+    outline: none;
+  }
+  
+  .form-group {
+    text-align: center;
+  }
+  
+  .form-group .line {
+    height: 2px;
+    width: 0px;
+    position: absolute;
+    background-color: darkgrey;
+    display: inline-block;
+    transition: .3s width ease-in-out;
+    position: relative;
+    top: -17px;
+  }
+  
+  .signup-form input[type=text]:focus+.line, select:focus+.line {
+    width: 100%;
+    background-color: #02add7;
+  }
+
+  .btn-outline-primary{
+      border-color: #02add7;
+      color: #02add7
+  }
+  .btn-outline-primary:hover{
+    background-color: #02add7;
+    color: white
+  }

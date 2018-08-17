@@ -8,6 +8,7 @@ export class GenericService {
 
   
   qnt_pedidos : any = 0
+  dafault_number : number = 999999
   
   constructor(private firebase: AngularFireDatabase) {
 
@@ -49,6 +50,12 @@ export class GenericService {
         this.qnt_pedidos = res.length
       }
     )
+  }
+
+  generateRef(){
+    if(this.dafault_number % 2 === 0){ this.dafault_number * 2}
+    else{this.dafault_number / 3}
+    return Math.floor(Math.random() * (this.dafault_number - 0) + this.dafault_number)
   }
 
 }

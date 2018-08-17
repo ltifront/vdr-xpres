@@ -26,6 +26,7 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { SubcategoriasComponent } from './components/subcategorias/subcategorias.component';
+import { PostDatabaseComponent } from './post-database/post-database.component';
 
 
 
@@ -42,6 +43,7 @@ import { SubcategoriasComponent } from './components/subcategorias/subcategorias
     UsuariosComponent,
     PedidosComponent,
     SubcategoriasComponent,
+    PostDatabaseComponent,
     
   ],
 
