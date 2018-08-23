@@ -9,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class PostDatabaseComponent implements OnInit {
 
-  
+  MASCARA_MONEY = { align: "left", decimal: ",", precision: "2", prefix: "R$ ",allowNegative: true, suffix: "", thousands: "."}
+
   readonly types = ['Ferragem', 'Vidro', 'Acessório']     
+  
   newObject : Object
   
   constructor() {
@@ -22,7 +24,7 @@ export class PostDatabaseComponent implements OnInit {
   }
 
   saveObject(){
-
+    
   }
 
 

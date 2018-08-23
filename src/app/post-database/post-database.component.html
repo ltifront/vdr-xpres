@@ -20,20 +20,20 @@
               <div class="line"></div>
           </div>
           <div class="form-group" *ngIf="newObject.type === 'Acessório'"> 
-              <input type="text" name="Weight" class="line-animation" placeholder="Valor Unitário" [(ngModel)]="newObject['value']">
+              <input currencyMask [options]="MASCARA_MONEY" type="text"  [(ngModel)]"newObject['value']" name="Weight" class="line-animation" placeholder="Valor Unitário">
               <div class="line"></div>
           </div>
           <div class="form-group" *ngIf="newObject.type === 'Vidro'"> 
-              <input type="text" name="Weight" class="line-animation" placeholder="Valor m²" [(ngModel)]="newObject['value']">
+              <input currencyMask [options]="MASCARA_MONEY" type="text" [(ngModel)]="newObject['value']" name="Weight" class="line-animation" placeholder="Valor m²">
               <div class="line"></div>
           </div>
           
-          <button type="button" class="btn btn-block btn-outline-primary">Cadastrar</button>
-            
-          
+          <button type="submit" (click)="saveObject()" [disabled]="!newObject.value && !newObject.profile && !newObject.Weight && !newObject.type" class="btn btn-block btn-outline-primary">Cadastrar</button>
 
         </form>
       </div>
+
+      <p class="text-center"><a routerLink="/dates">Ver Banco de Dados</a></p>
 
     </div>
   </div>

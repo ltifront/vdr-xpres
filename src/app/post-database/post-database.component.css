@@ -23,14 +23,25 @@ input, select, .btn-outline-primary{
     margin : 0 auto;
     display:block
   }
+  a{
+    text-decoration :underline;
+  }
   
   .signup-form form {
     padding: 20px 10px
   }
-  
+  .btn-outline-primary.disabled, .btn-outline-primary:disabled{
+    color: #cecece !important;
+    background-color: transparent;
+    border: 1px solid #cecece !important;
+  }
+  .btn-outline-primary.disabled, .btn-outline-primary:disabled:hover{
+    background-color: transparent;
+    color: #cecece !important;
+  }
   .signup-form input[type=text], select {
     border: none;
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 1.3px solid #d6d6d6;
     background-color: inherit;
     display: block;
     width: 100%;
